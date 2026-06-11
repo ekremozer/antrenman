@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antrenman & Takviye Rehberi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f11;
+    --bg2: #17171a;
+    --bg3: #1e1e23;
+    --bg4: #26262d;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0f0f2;
+    --text2: #a0a0aa;
+    --text3: #666672;
+    --accent: #e05c2a;
+    --accent2: #ff7a45;
+    --accent-dim: rgba(224,92,42,0.12);
+    --blue: #3b82f6;
+    --blue-dim: rgba(59,130,246,0.12);
+    --green: #22c55e;
+    --green-dim: rgba(34,197,94,0.1);
+    --amber: #f59e0b;
+    --amber-dim: rgba(245,158,11,0.1);
+    --red: #ef4444;
+    --red-dim: rgba(239,68,68,0.1);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px 80px; }
+
+  /* HEADER */
+  .header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .header-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .header p {
+    color: var(--text2);
+    font-size: 15px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text3);
+  }
+  .meta-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* WARNING BOX */
+  .warning-box {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 12px;
+  }
+  .warning-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .warning-text { font-size: 13px; color: #d4a017; line-height: 1.6; }
+  .warning-text strong { color: var(--amber); }
+
+  /* SUPPLEMENT TABLE */
+  .supplement-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .supp-row {
+    display: grid;
+    grid-template-columns: 130px 220px 100px 1fr;
+    gap: 0;
+    background: var(--bg2);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .supp-row:hover { border-color: var(--border2); }
+  .supp-cell {
+    padding: 14px 16px;
+    border-right: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .supp-cell:last-child { border-right: none; }
+  .supp-time {
+    font-weight: 500;
+    color: var(--text2);
+    font-size: 12px;
+  }
+  .supp-time small {
+    display: block;
+    color: var(--text3);
+    font-size: 11px;
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .supp-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 13px;
+  }
+  .supp-dose {
+    font-weight: 600;
+    color: var(--accent2);
+    font-size: 13px;
+  }
+  .supp-dose .new-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    background: var(--accent-dim);
+    color: var(--accent2);
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin-left: 4px;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+  }
+  .supp-desc {
+    color: var(--text2);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .supp-header {
+    display: grid;
+    grid-template-columns: 130px 220px 100px 1fr;
+    gap: 0;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+
+  /* PROGRAM SECTION */
+  .program-days {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .day-badge {
+    background: var(--accent-dim);
+    border: 1px solid rgba(224,92,42,0.25);
+    color: var(--accent2);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* BLOCK TITLE */
+  .block-header {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px 10px 0 0;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .block-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .block-num.orange { background: var(--accent-dim); color: var(--accent2); border: 1px solid rgba(224,92,42,0.3); }
+  .block-num.blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+  .block-num.purple { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,0.3); }
+  .block-title { font-size: 15px; font-weight: 600; color: var(--text); }
+  .block-subtitle { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+  /* EXERCISE TABLE */
+  .exercise-table {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .ex-header {
+    display: grid;
+    grid-template-columns: 36px 1fr 160px 60px;
+    background: var(--bg4);
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text3);
+    gap: 12px;
+  }
+  .ex-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 160px 60px;
+    padding: 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+    gap: 12px;
+    transition: background 0.15s;
+  }
+  .ex-row:hover { background: var(--bg3); }
+  .ex-num {
+    padding: 16px 0 16px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text3);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 18px;
+  }
+  .ex-content { padding: 14px 8px; }
+  .ex-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .gif-slot {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    background: var(--bg4);
+    color: var(--text3);
+    border: 1px dashed var(--border2);
+    border-radius: 4px;
+    padding: 2px 7px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .ex-note {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+    margin-bottom: 4px;
+  }
+  .ex-reason {
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .ex-protocol {
+    padding: 14px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .proto-set {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .proto-tempo {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: monospace;
+  }
+  .ex-gif {
+    padding: 14px 16px 14px 8px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 18px;
+  }
+  .gif-box {
+    width: 44px; height: 44px;
+    background: var(--bg4);
+    border: 1px dashed var(--border2);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: var(--text3);
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .gif-thumb {
+    width: 44px; height: 44px;
+    border-radius: 6px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .gif-thumb:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .modal-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .modal-close {
+    position: absolute;
+    top: -40px; right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .modal-close:hover {
+    color: var(--accent);
+  }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+  }
+  .badge-new { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+  .badge-warn { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+  .badge-alt { background: var(--blue-dim); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+  .badge-note { background: var(--red-dim); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+
+  /* ALERT BOX */
+  .alert {
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+  }
+  .alert-blue { background: var(--blue-dim); border: 1px solid rgba(59,130,246,0.2); color: #93c5fd; }
+  .alert-amber { background: var(--amber-dim); border: 1px solid rgba(245,158,11,0.2); color: #fcd34d; }
+  .alert-red { background: var(--red-dim); border: 1px solid rgba(239,68,68,0.2); color: #fca5a5; }
+  .alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+  /* PROGRESSION */
+  .prog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .prog-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .prog-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prog-card-title-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+  }
+  .prog-steps { list-style: none; }
+  .prog-step {
+    font-size: 12px;
+    color: var(--text2);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .prog-step:last-child { border-bottom: none; }
+  .prog-step-bullet {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(224,92,42,0.3);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px;
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  /* PAZAR-PAZARTESİ NOTE */
+  .day-note-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .day-note-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .day-note-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .day-note-title.sunday { color: var(--accent2); }
+  .day-note-title.monday { color: var(--amber); }
+  .day-note-body { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+  /* SUPER SET */
+  .superset-label {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    background: var(--purple-dim);
+    color: var(--purple);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 4px;
+    padding: 2px 6px;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 680px) {
+    .ex-header, .ex-row { grid-template-columns: 28px 1fr 130px 44px; }
+    .prog-grid { grid-template-columns: 1fr; }
+    .day-note-grid { grid-template-columns: 1fr; }
+    .supp-row { grid-template-columns: 1fr; }
+    .supp-header { display: none; }
+    .supp-cell { border-right: none; border-bottom: 1px solid var(--border); }
+    .supp-cell:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">Kişisel Rehber</div>
+    <h1>Antrenman & Takviye Programı</h1>
+    <p>Güçlü bel · Kas kütlesi · Bilek güreşi · Kol-Göğüs-Sırt gelişimi · Kalp sağlığı</p>
+    <p style="font-size:12px;color:var(--text3);margin-top:4px;">L5 pars defekti · Listezis · L3-S1 disk dejenerasyonu</p>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-dot"></div>Haftada 3 gün — Cuma / Pazar / Pazartesi</div>
+      <div class="meta-item"><div class="meta-dot"></div>Full body · İleri seviye</div>
+      <div class="meta-item"><div class="meta-dot"></div>Güncellenme: Haziran 2026</div>
+    </div>
+  </div>
+
+  <!-- TSH UYARISI -->
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-text">
+      <strong>TSH Alt Sınır Uyarısı:</strong> TSH değerin 0.36 mIU/mL olup referans aralığının (0.35–4.94) alt sınırındadır. Yoğun antrenman TSH'yi daha da baskılayabilir. Antrenman sürecinde <strong>aşırı yorgunluk, kalp çarpıntısı veya uyku bozukluğu</strong> yaşarsan endokrinoloji kontrolü yapılması önerilir.
+    </div>
+  </div>
+
+  <!-- ANTRENMAN PROGRAMI -->
+  <div class="section-title">Antrenman Programı</div>
+
+  <div class="program-days">
+    <div class="day-badge">Cuma</div>
+    <div class="day-badge">Pazar</div>
+    <div class="day-badge">Pazartesi</div>
+  </div>
+
+  <!-- BÖLÜM 1 -->
+  <div class="block-header">
+    <div class="block-num orange">1</div>
+    <div>
+      <div class="block-title">Klinik Core Stabilizasyonu & Isınma</div>
+      <div class="block-subtitle">Omurga zırhı — ana antrenmandan önce eksiksiz uygulanmalıdır</div>
+    </div>
+  </div>
+  <div class="exercise-table">
+    <div class="ex-header">
+      <span>#</span><span>Hareket</span><span>Protokol</span><span>GIF</span>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">1</div>
+      <div class="ex-content">
+        <div class="ex-name">Kardiyo Isınma <span class="badge badge-warn">Zorunlu</span></div>
+        <div class="ex-note">Koşu bandında hafif-orta tempo yürüyüş. Postür tamamen dik — gövde öne eğilmesin.</div>
+        <div class="ex-reason">Beldeki disklerin su tutma kapasitesini ve esnekliğini antrenman öncesi optimize eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">5–10 dakika</div>
+        <div class="proto-tempo">Dik postür</div>
+      </div>
+      <div class="ex-gif"><img src="img/Walking.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Walking"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">2</div>
+      <div class="ex-content">
+        <div class="ex-name">McGill Curl-Up</div>
+        <div class="ex-note">Belinizin altına ellerinizi koyarak doğal kavisinizi koruyun. Boynu aşırı bükmeden sadece omuzları yerden kaldırın. Her tekrarda 10 sn yukarda bekleyin.</div>
+        <div class="ex-reason">Lomber omurgaya sıfır yük bindirerek pars defekti ve listezis çevresindeki derin kasları aktif eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 8–10</div>
+        <div class="proto-tempo">10 sn statik</div>
+      </div>
+      <div class="ex-gif"><img src="img/McGill-Curl-Up.gif" class="gif-thumb" onclick="openModal(this.src)" alt="McGill Curl-Up"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">3</div>
+      <div class="ex-content">
+        <div class="ex-name">Bird Dog</div>
+        <div class="ex-note">Bacağı geriye uzatırken beli çukurlaştırmayın, kalçayı ve karnı sıkın. Kalça dışarı açılmasın. Her tekrarda 8 sn uzatarak bekleyin.</div>
+        <div class="ex-reason">Nötr omurga pozisyonunu pekiştirir, intra-abdominal basıncı yönetir.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 8–10</div>
+        <div class="proto-tempo">8 sn statik</div>
+      </div>
+      <div class="ex-gif"><img src="img/Bird-Dog.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Bird Dog"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">4</div>
+      <div class="ex-content">
+        <div class="ex-name">Side Plank</div>
+        <div class="ex-note">Dizler üzerinde (başlangıç) veya düz. Kalça sarkmasın, gövde tek düzlem. Her iki yöne uygulanır.</div>
+        <div class="ex-reason">Lateral omurga stabilizasyonunu güçlendirerek lateral fleksiyon stresine karşı direnç oluşturur.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 30–45 sn</div>
+        <div class="proto-tempo">Her yöne · Statik</div>
+      </div>
+      <div class="ex-gif"><img src="img/Side-Plank.webp" class="gif-thumb" onclick="openModal(this.src)" alt="Side Plank"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">5</div>
+      <div class="ex-content">
+        <div class="ex-name">Pallof Press <span class="badge badge-warn">Anti-Rotasyon</span></div>
+        <div class="ex-note">Kablo veya bant ile. Kabloyu göğüs ortasından ileri doğru iterken gövdenin dönmesine izin vermeyin. Kalça ve karnı kilitleyin. Her iki yöne.</div>
+        <div class="ex-reason">Disk fıtıklarının en büyük düşmanı olan ani rotasyon stresine karşı core direncini inşa eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 12</div>
+        <div class="proto-tempo">2-0-2-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Pallof Press.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Pallof Press"></div>
+    </div>
+
+  </div>
+
+  <!-- BÖLÜM 2 -->
+  <div class="block-header">
+    <div class="block-num blue">2</div>
+    <div>
+      <div class="block-title">Ana Hipertrofi & Güç (Revize)</div>
+      <div class="block-subtitle">Üst ve alt vücut antagonist süper setleri — mekanik yük belden alınıp hedef kaslara izole edilir</div>
+    </div>
+  </div>
+  <div class="exercise-table">
+    <div class="ex-header">
+      <span>#</span><span>Hareket</span><span>Protokol</span><span>GIF</span>
+    </div>
+
+    <div class="ex-row" style="border-bottom: none;">
+      <div class="ex-num">6</div>
+      <div class="ex-content">
+        <div class="ex-name">Chest Press Machine <span class="superset-label">SÜPER SET</span> <span class="badge badge-note">Chest Supported</span></div>
+        <div class="ex-note">Göğüs destekli makinede oturun. Kürek kemiklerini arkada sabitleyin (retraksiyon). Beli aşırı çukurlaştırmadan göğsü yukarı kaldırarak itin.</div>
+        <div class="ex-reason">Serbest ağırlıktaki bel stresini sıfırlayarak göğüste maksimum mekanik gerilim sağlar.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 8–12</div>
+        <div class="proto-tempo">3-1-1-0</div>
+      </div>
+      <div class="ex-gif"><img src="img/Chest Press Machine.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Chest Press"></div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; font-weight: 700; color: var(--purple); background: var(--bg2); padding: 6px 0; letter-spacing: 0.05em; border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+      ↓ SÜPER SET — ARA VERMEDEN ARDIŞIK ↓
+    </div>
+
+    <div class="ex-row" style="border-top: none;">
+      <div class="ex-num">7</div>
+      <div class="ex-content">
+        <div class="ex-name">Face Pull (Cable) <span class="superset-label">SÜPER SET</span> <span class="badge badge-new">YENİ</span></div>
+        <div class="ex-note">Kablo makinesinde halat ile göğüs hizasında çekiş. Çekerken ellerinizi kulak hizasına doğru dışa açın. Sırt dik.</div>
+        <div class="ex-reason">Arka omuz, trapez ve rotator cuff kaslarını çalıştırarak göğüs antrenmanına antagonist denge sağlar.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 12–15</div>
+        <div class="proto-tempo">2-0-1-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Face-Pull.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Face Pull"></div>
+    </div>
+
+    <div class="ex-row" style="border-bottom: none;">
+      <div class="ex-num">8</div>
+      <div class="ex-content">
+        <div class="ex-name">Lat Pulldown Machine <span class="superset-label">SÜPER SET</span></div>
+        <div class="ex-note">Hiperekstansiyondan kaçın. Gövdeyi hafifçe geriye eğip barı üst göğse çek, kontrollü bırak. Aşağıda sırtı 1 sn sıkıştır.</div>
+        <div class="ex-reason">Omurgaya dikey baskı yapmadan kanat kaslarını büyütür, bilek güreşindeki çekiş zincirini başlatır.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 8–12</div>
+        <div class="proto-tempo">2-0-1-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Lat Pulldown Machine.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Lat Pulldown"></div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; font-weight: 700; color: var(--purple); background: var(--bg2); padding: 6px 0; letter-spacing: 0.05em; border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+      ↓ SÜPER SET — ARA VERMEDEN ARDIŞIK ↓
+    </div>
+
+    <div class="ex-row" style="border-top: none;">
+      <div class="ex-num">9</div>
+      <div class="ex-content">
+        <div class="ex-name">Incline Chest Press veya Cable Fly <span class="superset-label">SÜPER SET</span> <span class="badge badge-new">YENİ</span></div>
+        <div class="ex-note">Sehpa açısı 30° - 45°. Bel boşluğunu abartmadan üst göğse odaklanın.</div>
+        <div class="ex-reason">Üst göğüs hacmini hedefler. Lat Pulldown'un antagonist dengesidir.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 10–12</div>
+        <div class="proto-tempo">3-1-1-0</div>
+      </div>
+      <div class="ex-gif"><img src="img/Incline-Chest-Press.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Incline Chest Press"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">10</div>
+      <div class="ex-content">
+        <div class="ex-name">Chest-Supported T-Bar Row <span class="badge badge-alt">veya Incline DB Row</span></div>
+        <div class="ex-note">Sehpa açısı 30–45°. Göğsü sehpaya tamamen yasla. Çekiş sırasında göğsü sehpadan kaldırarak beli bükme. Tepe noktada sırtı 1 sn sıkıştır.</div>
+        <div class="ex-reason">L5-S1 bölgesine binen yükü sehpa üzerine yıkarak sırt kalınlığını güvenle inşa eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 8–12</div>
+        <div class="proto-tempo">2-1-1-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Chest-Supported-T-Bar-Row.gif" class="gif-thumb" onclick="openModal(this.src)" alt="T-Bar Row"></div>
+    </div>
+
+    <div class="ex-row" style="border-bottom: none;">
+      <div class="ex-num">11</div>
+      <div class="ex-content">
+        <div class="ex-name">Leg Press Machine <span class="superset-label">SÜPER SET</span> <span class="badge badge-warn">Butt-Wink Yasak</span></div>
+        <div class="ex-note">45° — geniş ayak yerleşimi. Ağırlığı indirirken kalça koltuktan asla kalkmasın (butt-wink), L4-5 disk basısını artırır. Kalçayı koltuğa kilitle.</div>
+        <div class="ex-reason">Yüklü squat riski olmadan büyük kas gruplarını çalıştırarak doğal testosteron salınımını tetikler.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 10–12</div>
+        <div class="proto-tempo">3-1-1-0</div>
+      </div>
+      <div class="ex-gif"><img src="img/Leg Press Machine.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Leg Press"></div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; font-weight: 700; color: var(--purple); background: var(--bg2); padding: 6px 0; letter-spacing: 0.05em; border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+      ↓ SÜPER SET — ARA VERMEDEN ARDIŞIK ↓
+    </div>
+
+    <div class="ex-row" style="border-top: none;">
+      <div class="ex-num">12</div>
+      <div class="ex-content">
+        <div class="ex-name">Seated Leg Curl <span class="superset-label">SÜPER SET</span> <span class="badge badge-note">Sadece Seated</span></div>
+        <div class="ex-note">⚠️ Lying (yüz üstü) versiyonu KULLANILMAZ. Yalnızca oturarak (seated) yapılacak. Hamstringleri sıkıştırırken pelvis sehpadan kalkmasın.</div>
+        <div class="ex-reason">Deadlift riski olmadan hamstring grubunu izole eder, diz dengesini kurar ve Leg Press'e antagonist çalışır.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">4 × 10–12</div>
+        <div class="proto-tempo">2-0-1-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Seated-Leg-Curl.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Leg Curl"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">13</div>
+      <div class="ex-content">
+        <div class="ex-name">Hip Thrust Machine <span class="badge badge-new">Testosteron & Cinsel Sağlık</span> <span class="badge badge-alt">veya Bant Hip Thrust</span></div>
+        <div class="ex-note">Makinede veya bench + bant ile. Sırtın üst kısmı bench'e yaslanır, kalça tam aşağıda başlar, tepe noktada gluteyi 1 sn sıkıştır. Beli hiperekstansiyona sokma — hareket kalçadan gelir, belden değil. Pelvik tilt nötrde kalmalı. <strong>Ağrı hissedilirse omuzların yerde olduğu Glute Bridge varyasyonuna geçilmelidir.</strong></div>
+        <div class="ex-reason">Gluteus maximus en büyük kas grubu olarak testosteron salınımının birincil tetikleyicisidir. Cinsel sağlık, pelvik taban gücü ve uzun vadeli hormonal denge için doğrudan katkı sağlar — bele sıfır aksiyel yük.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 12–15</div>
+        <div class="proto-tempo">2-1-1-0</div>
+      </div>
+      <div class="ex-gif"><img src="img/Hip-Thrust-Machine.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Hip Thrust"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">14</div>
+      <div class="ex-content">
+        <div class="ex-name">Cable Lateral Raise <span class="badge badge-alt">veya Seated DB</span></div>
+        <div class="ex-note">Ayakta kablo ile momentum almayın. Oturarak dumbbell ile yapılıyorsa sırt sehpaya tam yaslansın. Yukarıda mikro bekleme.</div>
+        <div class="ex-reason">Omurgaya yük bindirmeden lateral deltoidi izole ederek omuz genişliğini inşa eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 12–15</div>
+        <div class="proto-tempo">2-0-1-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Cable-Lateral-Raise.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Lateral Raise"></div>
+    </div>
+
+  </div>
+
+  <!-- BÖLÜM 3 -->
+  <div class="block-header">
+    <div class="block-num purple">3</div>
+    <div>
+      <div class="block-title">Kol & İleri Seviye Bilek Güreşi Spesifik</div>
+      <div class="block-subtitle">Kavrama · Pronasyon · Supinasyon · Biceps-Triceps zinciri</div>
+    </div>
+  </div>
+  <div class="exercise-table">
+    <div class="ex-header">
+      <span>#</span><span>Hareket</span><span>Protokol</span><span>GIF</span>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">15</div>
+      <div class="ex-content">
+        <div class="ex-name">Incline Dumbbell Biceps Curl</div>
+        <div class="ex-note">Sehpayı 45–60°'ye ayarla. Dirsekleri gövdenin gerisinde sabitle, sadece ön kol hareket etsin.</div>
+        <div class="ex-reason">Biceps uzun başını maksimum esnemede çalıştırarak kol hacmini ve bilek güreşindeki back pressure gücünü büyütür.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 10–12</div>
+        <div class="proto-tempo">3-0-1-1</div>
+      </div>
+      <div class="ex-gif"><img src="img/Incline-Dumbbell-Curls.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Biceps Curl"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">16</div>
+      <div class="ex-content">
+        <div class="ex-name">Skull Crusher <span class="badge badge-warn">Teknik Kritik</span></div>
+        <div class="ex-note">Flat bench'te yatarak. Hareketi her zaman <strong style="color:var(--text);">alnın 2-3 cm gerisine</strong> indir — başın arkasına ASLA indirme (dirsekler açılır, eklem stresi artar). Dirsekler sabit ve birbirine paralel.</div>
+        <div class="alert alert-blue" style="margin-top:8px;">
+          <span class="alert-icon">🔄</span>
+          <span><strong style="color:#93c5fd;">Alternatif:</strong> Dirsekte rahatsızlık hissedersen → Skull Crusher'ı 2 sete düşür + 2 set Cable Triceps Pushdown ekle (Tempo: 2-0-1-1). Bu kombinasyon triceps uzun baş + lateral baş dengesini korur ve eklem stresini dağıtır.</span>
+        </div>
+        <div class="ex-reason" style="margin-top:6px;">Overhead hareketlerdeki bel fıtığı/kayma riskini tamamen yok ederek triceps uzun başını güvenle izole eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 10–12</div>
+        <div class="proto-tempo">3-0-1-0</div>
+      </div>
+      <div class="ex-gif"><img src="img/Skullcrusher-1.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Skull Crusher"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">17</div>
+      <div class="ex-content">
+        <div class="ex-name">Rope Hammer Curl</div>
+        <div class="ex-note">Kablo makinesinde halat (rope) aparatı ile. Başparmaklar yukarı bakacak (nötr) pozisyonda, dirsekleri gövdeye sabitleyerek curl yapın. Tepe noktada halatın uçlarını hafifçe dışa açarak sıkıştırın.</div>
+        <div class="ex-reason">Brachioradialis ve brachialis'i uyararak ön kol hacmini artırır ve çekiş zincirini kuvvetlendirir.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 8–12</div>
+        <div class="proto-tempo">2-1-1-0</div>
+      </div>
+      <div class="ex-gif"><img src="img/Hammer-Curl.gif" class="gif-thumb" onclick="openModal(this.src)" alt="Hammer Curl"></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">18</div>
+      <div class="ex-content">
+        <div class="ex-name">Dumbbell Pronation <span class="badge badge-warn">Top-Roll Gücü</span></div>
+        <div class="ex-note">Ön kolu sehpaya yasla. Dumbbell'ın bir ucuna bağlı kemeri elin dışından dolayarak, avuç yere bakacak yönde bileği döndür (içe rotasyon).</div>
+        <div class="ex-reason">Rakibin elini dışa açma (top-roll) tekniği ve pronasyon gücünü doğrudan inşa eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 12</div>
+        <div class="proto-tempo">2-0-1-1</div>
+      </div>
+      <div class="ex-gif"><div class="gif-box">GIF<br>buraya</div></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">19</div>
+      <div class="ex-content">
+        <div class="ex-name">Dumbbell Supination <span class="badge badge-new">YENİ — Hook Gücü</span></div>
+        <div class="ex-note">Ön kolu dize veya sehpaya sabitle. Dumbbell'ı asimetrik (ağırlık başparmak tarafında) altından kavrayıp, avuç tavana bakacak şekilde içe döndür. Tepede 1 sn sık.</div>
+        <div class="ex-reason">Bilek güreşinde rakibin bileğini bükerek kendi alanına çekmeyi sağlayan Hook gücünü inşa eder.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 12–15</div>
+        <div class="proto-tempo">2-1-1-1</div>
+      </div>
+      <div class="ex-gif"><div class="gif-box">GIF<br>buraya</div></div>
+    </div>
+
+    <div class="ex-row">
+      <div class="ex-num">20</div>
+      <div class="ex-content">
+        <div class="ex-name">Dumbbell Radial Deviation (Rising) <span class="badge badge-new">YENİ — Rising Gücü</span></div>
+        <div class="ex-note">Elinize tek tarafı yüklü bir dumbbell veya kısa bar/sledgehammer alın. Kolunuzu sabit tutup bileği başparmak yönünde yukarı (radial deviasyon) kaldırın.</div>
+        <div class="ex-reason">Bilek güreşinde en kritik kuvvetlerden biri olan "Rising" gücünü inşa eder, rakibe üstünlük kurmayı sağlar.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 12–15</div>
+        <div class="proto-tempo">2-0-1-1</div>
+      </div>
+      <div class="ex-gif"><div class="gif-box">GIF<br>buraya</div></div>
+    </div>
+
+    <div class="ex-row" style="border-bottom: none;">
+      <div class="ex-num">21</div>
+      <div class="ex-content">
+        <div class="ex-name">Wrist Curl <span class="superset-label">SÜPER SET</span></div>
+        <div class="ex-note">Barı parmak uçlarına kadar yuvarla, yukarı bük (kavrama gücü).</div>
+        <div class="ex-reason">Bileğin iç fleksörlerini uyararak kavrama gücünü artırır.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 15</div>
+        <div class="proto-tempo">2-1-2-0</div>
+      </div>
+      <div class="ex-gif"><div class="gif-box">GIF<br>buraya</div></div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; font-weight: 700; color: var(--purple); background: var(--bg2); padding: 6px 0; letter-spacing: 0.05em; border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+      ↓ SÜPER SET — ARA VERMEDEN ARDIŞIK ↓
+    </div>
+
+    <div class="ex-row" style="border-top: none;">
+      <div class="ex-num">22</div>
+      <div class="ex-content">
+        <div class="ex-name">Reverse Wrist Curl <span class="superset-label">SÜPER SET</span></div>
+        <div class="ex-note">Ön kolun üstünü sehpaya tamamen sabitle, hareketi izole et.</div>
+        <div class="ex-reason">Bileğin dış fleksörlerini uyararak bilek kalınlığını ve dengesini sağlar.</div>
+      </div>
+      <div class="ex-protocol">
+        <div class="proto-set">3 × 15</div>
+        <div class="proto-tempo">2-1-2-0</div>
+      </div>
+      <div class="ex-gif"><div class="gif-box">GIF<br>buraya</div></div>
+    </div>
+
+  </div>
+
+  <!-- PROGRESSION -->
+  <div style="margin-top:48px;">
+    <div class="section-title">Progression & Deload Protokolü</div>
+
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="prog-card-title">
+          <div class="prog-card-title-icon" style="background:var(--accent-dim);">📈</div>
+          Çift İlerleme Modeli
+        </div>
+        <ul class="prog-steps">
+          <li class="prog-step"><div class="prog-step-bullet">1</div><span>Hedef tekrar aralığının üst sınırına (örn: 12) tüm setlerde temiz formla ulaş</span></li>
+          <li class="prog-step"><div class="prog-step-bullet">2</div><span>Sonraki antrenmanda ağırlığı en küçük birim kadar artır (2.5 kg veya 1 plaka)</span></li>
+          <li class="prog-step"><div class="prog-step-bullet">3</div><span>Yeni ağırlıkla tekrar alt sınıra (örn: 8) düşer — oradan tekrar 12'ye tırman</span></li>
+          <li class="prog-step"><div class="prog-step-bullet">4</div><span>Beli bozmadan tamamlama şartı — teknik bozuluyorsa ağırlık artırılmaz</span></li>
+        </ul>
+      </div>
+
+      <div class="prog-card">
+        <div class="prog-card-title">
+          <div class="prog-card-title-icon" style="background:var(--blue-dim);">🔄</div>
+          Deload — Her 6–8 Hafta
+        </div>
+        <ul class="prog-steps">
+          <li class="prog-step"><div class="prog-step-bullet" style="background:var(--blue-dim);color:var(--blue);border-color:rgba(59,130,246,0.3);">1</div><span>Tüm ağırlıkları %30–40 düşür</span></li>
+          <li class="prog-step"><div class="prog-step-bullet" style="background:var(--blue-dim);color:var(--blue);border-color:rgba(59,130,246,0.3);">2</div><span>Her harekette set sayısını 1 azalt (4→3, 3→2)</span></li>
+          <li class="prog-step"><div class="prog-step-bullet" style="background:var(--blue-dim);color:var(--blue);border-color:rgba(59,130,246,0.3);">3</div><span>Failure'a gitme — RPE 5–6 seviyesinde pompalama</span></li>
+          <li class="prog-step"><div class="prog-step-bullet" style="background:var(--blue-dim);color:var(--blue);border-color:rgba(59,130,246,0.3);">4</div><span>Core bölümü (McGill Big 3 + Pallof) tam performansta devam eder</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:32px;">Pazar – Pazartesi Uygulama Notu</div>
+    <div class="day-note-grid">
+      <div class="day-note-card">
+        <div class="day-note-title sunday">Pazar</div>
+        <div class="day-note-body">Haftalık dinlenmeden yeni çıkıldığı için en güçlü gün. Progression protokolünü sonuna kadar zorla, ağırlık artırmayı dene.</div>
+      </div>
+      <div class="day-note-card">
+        <div class="day-note-title monday">Pazartesi</div>
+        <div class="day-note-body">Pazar'dan kalan kas ve tendon yorgunluğu nedeniyle ağırlıkları <strong style="color:var(--amber);">%10–15 hafiflet.</strong> Özellikle ön kol, supinasyon ve pronasyon hareketlerinde temiz form ve kas pompasına (RPE 7–8) odaklan — failure yasak.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKVİYE LİSTESİ -->
+  <div style="margin-top:48px;">
+    <div class="section-title">Günlük Takviye Listesi</div>
+
+    <div class="supp-header">
+      <span>Zaman</span>
+      <span>Ürün</span>
+      <span>Doz</span>
+      <span>Amaç & Notlar</span>
+    </div>
+
+    <div class="supplement-grid">
+
+      <div class="supp-row">
+        <div class="supp-cell supp-time">Her Gün<small>Antrenman: Sonrası<br>Off Günler: Kahvaltıyla</small></div>
+        <div class="supp-cell supp-name">Kreatin Monohidrat<br><small style="color:var(--text3);font-size:11px;">Tercihen Creapure sertifikalı</small></div>
+        <div class="supp-cell supp-dose">5 g<br><small style="color:var(--text3);font-size:11px;">(1 düz ölçek)</small></div>
+        <div class="supp-cell supp-desc">Kas hücrelerindeki ATP yenileme hızını artırarak güç, patlayıcılık ve antrenman hacmini doğrudan destekler. Bilek güreşindeki maksimal kasılma gücüne direkt katkı sağlar. DHT dönüşümünü destekleyerek doğal testosteron profilini güçlendirir. Kreatin monohidrat, klinik literatürdeki en iyi kanıtlanmış takviyedir — yükleme fazı gerekmez, 5 g/gün sabit doz yeterlidir. Bol su ile alınmalıdır (günlük en az 2.5 litre su tüketimi önerilir).</div>
+      </div>
+
+      <div class="supp-row">
+        <div class="supp-cell supp-time">Öğle Yemeği<small>Tok</small></div>
+        <div class="supp-cell supp-name">Ocean D3 K2 Damla</div>
+        <div class="supp-cell supp-dose">5 Damla</div>
+        <div class="supp-cell supp-desc">D vitamini seviyeni (24.9 ng/mL) yükselterek pars defekti bölgesinde kemik kalitesini ve kalsiyum döngüsünü destekler. Yağlı öğünle emilim maksimuma çıkar.</div>
+      </div>
+
+      <div class="supp-row">
+        <div class="supp-cell supp-time">Akşam Yemeği<small>Tok</small></div>
+        <div class="supp-cell supp-name">Solgar Omega-3 950 mg</div>
+        <div class="supp-cell supp-dose">1 Kapsül</div>
+        <div class="supp-cell supp-desc">L3-S1 disk enflamasyonunu ve ödemi içeriden baskılar. Uzun vadede kronik düşük HDL (31-33 mg/dL) değerini yukarı taşımayı ve kardiyovasküler sağlığı desteklemeyi hedefler.</div>
+      </div>
+
+      <div class="supp-row">
+        <div class="supp-cell supp-time">Gece<small>Yatmadan Önce</small></div>
+        <div class="supp-cell supp-name">Venatura Magnezyum Kompleks<br><small style="color:var(--text3);font-size:11px;">Bisglisinat + Sitrat + P5P</small></div>
+        <div class="supp-cell supp-dose">1 Kapsül</div>
+        <div class="supp-cell supp-desc">Omurga çevresi kas spazmlarını gevşetir, uyku kalitesini destekler. <strong style="color:var(--text);">Kural:</strong> Çay/kahveden en az 2 saat sonra alınmalıdır.</div>
+      </div>
+
+    </div>
+
+    <div class="alert alert-blue" style="margin-top:12px;">
+      <span class="alert-icon">ℹ️</span>
+      <span>Liste minimalize edilmiştir. Sadece hedeflere (kas/güç inşası ve pars defekti onarımı) en çok etki eden kanıtlanmış takviyeler bırakılmış, hap yorgunluğu yapabilecek gereksiz takviyeler listeden temizlenmiştir.</span>
+    </div>
+  </div>
+
+  <div style="margin-top:48px; padding-top:24px; border-top:1px solid var(--border); font-size:12px; color:var(--text3); text-align:center; line-height:1.8;">
+    Bu rehber kişisel sağlık raporları (MR, BT, kan tahlili) temel alınarak hazırlanmıştır.<br>
+    Herhangi bir ağrı veya şikâyet durumunda antrenmana ara ver ve hekiminize danışın.
+  </div>
+
+</div>
+
+<!-- GIF MODAL -->
+<div class="modal-overlay" id="gifModal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div class="modal-close" onclick="closeModal()">&times;</div>
+    <img id="modalImg" src="" alt="Tam Boyutlu GIF">
+  </div>
+</div>
+
+<script>
+  function openModal(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('gifModal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('gifModal').classList.remove('active');
+    setTimeout(() => { document.getElementById('modalImg').src = ''; }, 300);
+  }
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>
